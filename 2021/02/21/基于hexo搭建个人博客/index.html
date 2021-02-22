@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>基于Hexo搭建个人博客 | 京墨博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文基于静态博客网站生成器Hexo实现个人博客，并将博客发布在github和gitee中。准备条件：  安装和配置Hexo（1）安装nodejs，因为Hexo是基于nodejs: https:&#x2F;&#x2F;erosares.github.io&#x2F;2021&#x2F;02&#x2F;21&#x2F;Windows10%E5%AE%89%E8%A3%85nodejs&#x2F;  （2）安装淘宝cnpm管理器，因为npm管理器由于访问外网限制导致部分包">
+  <meta name="description" content="本文基于静态博客网站生成器Hexo实现个人博客，并将博客发布在github和gitee中。  安装和配置Hexo（1）安装nodejs，因为Hexo是基于nodejs: https:&#x2F;&#x2F;erosares.github.io&#x2F;2021&#x2F;02&#x2F;21&#x2F;Windows10%E5%AE%89%E8%A3%85nodejs&#x2F;  （2）安装淘宝cnpm管理器，因为npm管理器由于访问外网限制导致部分包无法下载或">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Hexo搭建个人博客">
 <meta property="og:url" content="http://example.com/2021/02/21/%E5%9F%BA%E4%BA%8Ehexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="京墨博客">
-<meta property="og:description" content="本文基于静态博客网站生成器Hexo实现个人博客，并将博客发布在github和gitee中。准备条件：  安装和配置Hexo（1）安装nodejs，因为Hexo是基于nodejs: https:&#x2F;&#x2F;erosares.github.io&#x2F;2021&#x2F;02&#x2F;21&#x2F;Windows10%E5%AE%89%E8%A3%85nodejs&#x2F;  （2）安装淘宝cnpm管理器，因为npm管理器由于访问外网限制导致部分包">
+<meta property="og:description" content="本文基于静态博客网站生成器Hexo实现个人博客，并将博客发布在github和gitee中。  安装和配置Hexo（1）安装nodejs，因为Hexo是基于nodejs: https:&#x2F;&#x2F;erosares.github.io&#x2F;2021&#x2F;02&#x2F;21&#x2F;Windows10%E5%AE%89%E8%A3%85nodejs&#x2F;  （2）安装淘宝cnpm管理器，因为npm管理器由于访问外网限制导致部分包无法下载或">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-21T07:44:19.000Z">
-<meta property="article:modified_time" content="2021-02-22T01:46:16.473Z">
+<meta property="article:modified_time" content="2021-02-22T03:23:49.392Z">
 <meta property="article:author" content="京墨">
 <meta property="article:tag" content="hexo、博客">
 <meta name="twitter:card" content="summary">
@@ -175,12 +175,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文基于静态博客网站生成器Hexo实现个人博客，并将博客发布在github和gitee中。<br>准备条件：</p>
+        <p>本文基于静态博客网站生成器Hexo实现个人博客，并将博客发布在github和gitee中。</p>
 <ol>
 <li>安装和配置Hexo<br>（1）安装nodejs，因为Hexo是基于nodejs:<pre><code> https://erosares.github.io/2021/02/21/Windows10%E5%AE%89%E8%A3%85nodejs/
 </code></pre>
-（2）安装淘宝cnpm管理器，因为npm管理器由于访问外网限制导致部分包无法下载或者网速很慢，所以安装淘宝的cnpm管理器<br>（3）安装Hexo</li>
-<li>创建github或者gitee博客仓库</li>
+（2）安装淘宝cnpm管理器，因为npm管理器由于访问外网限制导致部分包无法下载或者网速很慢，所以安装淘宝的cnpm管理器<pre><code> `npm install -g cnpm --registry=http://registry.npm.taobao.org`
+通过cnpm -v输出版本验证cnpm是否安装成功
+</code></pre>
+（3）安装Hexo框架<pre><code>`cnpm install -g hexo-cli`
+通过hexo -v查看是否安装成功
+</code></pre>
+</li>
+<li>创建github或者gitee博客仓库<br> github和gitee操作一致：<br>（1）创建博客仓库，操作为“New repository”<br>（2）Repository name命名必须为“YourGithubName.github.io”</li>
+<li>博客编写与发布<br> 创建博客目录，例如在创建目录“blogs”，以下操作均在cmd中切换到blogs目录下执行。<br>（1）初始化博客<pre><code>`hexo init`
+</code></pre>
+（2）创建博客<pre><code>`hexo new “我的第一篇博客”`，此时会生成一个markdown文件“我的第一篇博客.md”。
+</code></pre>
+（3）编辑博客<pre><code>推荐使用MarkdownPad工具编辑markdown文件。
+</code></pre>
+（4）清理博客目录<pre><code>`hexo clean`
+</code></pre>
+（5）生成<pre><code>`hexo generate`
+</code></pre>
+（6）安装git部署插件，每个博客目录只需要安装一次<pre><code>`cnpm install --save hexo-deployer-git`
+</code></pre>
+（7）配置_config.yml，后续可将本地博客推送到远端github或者gitee<br>   deploy:<pre><code> type: git
+ repo: https://github.com/YourGithubName/YourGithubName.github.io
+ branch: master
+</code></pre>
+（8）本地预览博客<pre><code> `hexo server`
+ 浏览器访问http://localhost:4000/
+</code></pre>
+（9）推送到远端博客仓库<pre><code> `hexo deploy`
+ 过程中输入你的github用户名和密码即可完成认证并推送。
+</code></pre>
+ 推送成功后大概一分钟左右就可通过<a target="_blank" rel="noopener" href="https://yourgithubname.github.io/%E6%9F%A5%E7%9C%8B%E5%8D%9A%E5%AE%A2%E3%80%82">https://YourGithubName.github.io/查看博客。</a></li>
 </ol>
 
       
